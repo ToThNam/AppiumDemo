@@ -1,7 +1,7 @@
 describe('Simple App testing', function() {
 
-  beforeEach(() => {
-    $("~app-root").waitForDisplayed(11000, false)
+  beforeEach( async () => {
+    await $("~app-root").waitForDisplayed(11000, false)
   });
 
   it('Invalid Login Test', async function() {
@@ -31,6 +31,7 @@ describe('Simple App testing', function() {
     const username = await $('~username'); 
     const password = await $('~password');
     const login = await $('~login');
+    const logout = await $('~logout');
     const loginstatus = await $('~loginstatus');
     await username.setValue('nam');
     await password.setValue('123456');
@@ -46,7 +47,7 @@ describe('Simple App testing', function() {
 
     await login.click();
     await loginstatus.waitForDisplayed(11000);
-
+    await logout.click();
     // expect(await loginstatus.getText()).to.equal('success');
   });
 });
